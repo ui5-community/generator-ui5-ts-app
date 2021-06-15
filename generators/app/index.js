@@ -19,6 +19,11 @@ module.exports = class extends Generator {
       );
     }
 
+    const minFwkVersion = {
+      OpenUI5: "1.90.1", //"1.60.0",
+      SAPUI5: "1.90.0" //"1.77.0"
+    };
+
     const prompts = [
       {
         type: "input",
@@ -31,7 +36,7 @@ module.exports = class extends Generator {
 
           return "Please use alpha numeric characters only for the application name.";
         },
-        default: "myUI5Library"
+        default: "myapp"
       },
       {
         type: "input",
@@ -55,22 +60,20 @@ module.exports = class extends Generator {
       },
       {
         when: response => {
-          const minFwkVersion = {
-            OpenUI5: "1.60.0",
-            SAPUI5: "1.77.0"
-          };
           this._minFwkVersion = minFwkVersion[response.framework];
           return true;
         },
         type: "input", // HINT: we could also use the version info from OpenUI5/SAPUI5 to provide a selection!
         name: "frameworkVersion",
         message: "Which framework version do you want to use?",
-        default: "1.90.1",
+        default: answers => {
+          return minFwkVersion[answers.framework];
+        },
         validate: v => {
           return (
             (v && semver.valid(v) && semver.gte(v, this._minFwkVersion)) ||
             chalk.red(
-              `Framework requires the min version ${this._minFwkVersion}!`
+              `Framework requires the min version ${this._minFwkVersion} due to the availability of the ts-types!`
             )
           );
         }
@@ -90,36 +93,20 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      // this.props = props;
+
+      // use the namespace and the application name as new directory
       if (props.newdir) {
         this.destinationRoot(`${props.namespace}.${props.application}`);
       }
+      delete props.newdir;
 
+      // apply the properties
       this.config.set(props);
-      /*
-      this.config.set("namespaceURI", props.namespace.split(".").join("/"));
-      this.config.set(
-        "librarynamespace",
-        `${props.namespace}.${props.libraryname}`
-      );
-      this.config.set(
-        "librarynamespaceURI",
-        this.config
-          .get("librarynamespace")
-          .split(".")
-          .join("/")
-      );
-      this.config.set(
-        "librarybasepath",
-        this.config
-          .get("librarynamespace")
-          .split(".")
-          .map(_ => "..")
-          .join("/") + "/"
-      );
-      this.config.set("frameworklowercase", props.framework.toLowerCase());
-      */
+
+      // determine the ts-types and version
+      this.config.set("tstypes", `@${props.framework.toLowerCase()}/ts-types-esm`);
+      this.config.set("tstypesVersion", props.frameworkVersion);
+
     });
   }
 

@@ -14,7 +14,7 @@
         "baseUrl": "./",
         "typeRoots": [
             "./node_modules/@types",
-            "./node_modules/@sapui5/ts-types-esm"
+            "./node_modules/<%= tstypes %>"
         ],
         "paths": {
             "ui5/typescript/helloworld/*": [
