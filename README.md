@@ -21,11 +21,11 @@ $> yo easy-ui5 ts-app
  ´   `  |° ´ Y `
 ```
 
-Run you can use `npm start` (or `yarn start`) to start the local server for development.
+After the generation of your project you can use `npm start` (or `yarn start`) to start the local development server.
 
 ## Standalone usage
 
-Note the different greeting when the generator starts.
+Note the different greeting when the generator starts:
 
 ```bash
 $> npm i -g yo
