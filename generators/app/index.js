@@ -8,14 +8,14 @@ const semver = require("semver");
 
 module.exports = class extends Generator {
 
-  static displayName = "Create a new OpenUI5/SAPUI5 application";
+  static displayName = "Create a new UI5 TypeScript application";
 
   prompting() {
 
     // Have Yeoman greet the user.
     if (!this.options.embedded) {
       this.log(
-        yosay(`Welcome to the ${chalk.red("generator-ui5-application")} generator!`)
+        yosay(`Welcome to the ${chalk.red("generator-ui5-ts-app")} generator!`)
       );
     }
 

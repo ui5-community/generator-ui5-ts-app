@@ -33,7 +33,7 @@ $> yo ./generator-ui5-ts-app
 
      _-----_     ╭──────────────────────────╮
     |       |    │      Welcome to the      │
-    |--(o)--|    │     easy-ui5-project     │
+    |--(o)--|    │   generator-ui5-ts-app   │
    `---------´   │        generator!        │
     ( _´U`_ )    ╰──────────────────────────╯
     /___A___\   /
