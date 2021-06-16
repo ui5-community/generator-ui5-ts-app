@@ -17,7 +17,7 @@
             "./node_modules/<%= tstypes %>"
         ],
         "paths": {
-            "ui5/typescript/helloworld/*": [
+            "<%= appURI %>/*": [
                 "./src/*"
             ]
         }

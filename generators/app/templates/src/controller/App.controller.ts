@@ -3,7 +3,7 @@ import Controller from "sap/ui/core/mvc/Controller";
 import AppComponent from "../Component";
 
 /**
- * @namespace <%= namespace %>.controller
+ * @namespace <%= appId %>.controller
  */
 export default class AppController extends Controller {
 

@@ -107,6 +107,10 @@ module.exports = class extends Generator {
       this.config.set("tstypes", `@${props.framework.toLowerCase()}/ts-types-esm`);
       this.config.set("tstypesVersion", props.frameworkVersion);
 
+      // appId + appURI
+      this.config.set("appId", `${props.namespace}.${props.application}`);
+      this.config.set("appURI", `${props.namespace.split(".").join("/")}/${props.application}`);
+
     });
   }
 
