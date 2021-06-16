@@ -12,7 +12,7 @@
 	<script id="sap-ui-bootstrap"
 			src="resources/sap-ui-core.js"
 			data-sap-ui-resourceroots='{
-				"<%= namespace %>": "./"
+				"<%= appId %>": "./"
 			}'
 			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-compatVersion="edge"
@@ -26,6 +26,6 @@
 </head>
 
 <body class="sapUiBody">
-	<div data-sap-ui-component data-name="<%= namespace %>"></div>
+	<div data-sap-ui-component data-name="<%= appId %>"></div>
 </body>
 </html>

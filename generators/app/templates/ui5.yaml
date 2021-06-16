@@ -1,6 +1,6 @@
 specVersion: "2.0"
 metadata:
-  name: <%= namespace %>.<%= application %>
+  name: <%= appId %>
 type: application
 framework:
   name: <%= framework %>

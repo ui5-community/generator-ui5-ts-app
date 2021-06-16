@@ -1,6 +1,6 @@
 {
   "name": "generator-ui5-ts-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yeoman-based (sub-)generator for a basic UI5 application based on TypeScript",
   "main": "index.js",
   "scripts": {

@@ -3,7 +3,7 @@ import { support } from "sap/ui/Device";
 
 
 /**
- * @namespace <%= namespace %>
+ * @namespace <%= appId %>
  */
 export default class Component extends UIComponent {
 
