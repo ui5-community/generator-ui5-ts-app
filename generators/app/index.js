@@ -5,6 +5,7 @@ const yosay = require("yosay");
 const path = require("path");
 const glob = require("glob");
 const semver = require("semver");
+const packageJson = require('package-json');
 
 module.exports = class extends Generator {
 
@@ -22,6 +23,11 @@ module.exports = class extends Generator {
     const minFwkVersion = {
       OpenUI5: "1.90.1", //"1.60.0",
       SAPUI5: "1.90.0" //"1.77.0"
+    };
+
+    const fwkDependencies = {
+      OpenUI5: "@openui5/ts-types-esm",
+      SAPUI5: "@sapui5/ts-types-esm"
     };
 
     const prompts = [
@@ -66,9 +72,15 @@ module.exports = class extends Generator {
         type: "input", // HINT: we could also use the version info from OpenUI5/SAPUI5 to provide a selection!
         name: "frameworkVersion",
         message: "Which framework version do you want to use?",
-        default: answers => {
-          return minFwkVersion[answers.framework];
-        },
+        default: async (answers) => {
+          const npmPackage = fwkDependencies[answers.framework];
+          try {
+            return (await packageJson(npmPackage)).version;
+          } catch (ex) {
+            chalk.red('Failed to lookup latest version for ${npmPackage}! Fallback to min version...')
+            return minFwkVersion[answers.framework];
+          }
+      },
         validate: v => {
           return (
             (v && semver.valid(v) && semver.gte(v, this._minFwkVersion)) ||
