@@ -1,5 +1,6 @@
 # Hidden Files
 _
+test/*/
 
 # Logs
 logs
