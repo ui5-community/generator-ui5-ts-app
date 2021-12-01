@@ -1,5 +1,9 @@
 "use strict";
 const Generator = require("yeoman-generator");
+// patches the Generator for the install tasks as new custom install
+// tasks produce ugly errors! (Related issue: https://github.com/yeoman/environment/issues/309)
+require('lodash').extend(Generator.prototype, require('yeoman-generator/lib/actions/install'))
+
 const chalk = require("chalk");
 const yosay = require("yosay");
 const path = require("path");
@@ -10,6 +14,13 @@ const packageJson = require('package-json');
 module.exports = class extends Generator {
 
   static displayName = "Create a new UI5 TypeScript application";
+
+  constructor(args, opts) {
+    super(args, opts, {
+      // disable the Yeoman 5 package-manager logic (auto install)!
+      customInstallTask: "disabled"
+    });
+  }
 
   prompting() {
 
@@ -148,7 +159,8 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.config.set("setupCompleted", true);
+    // needed as long as the Yeoman 5.x installer produces
+    // ugly error messages while looking for package.json
     this.installDependencies({
       bower: false,
       npm: true
