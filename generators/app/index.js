@@ -159,6 +159,7 @@ module.exports = class extends Generator {
   }
 
   install() {
+    this.config.set("setupCompleted", true);
     // needed as long as the Yeoman 5.x installer produces
     // ugly error messages while looking for package.json
     this.installDependencies({
