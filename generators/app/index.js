@@ -104,7 +104,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "author",
-        message: "Who is the author of the library?",
+        message: "Who is the author of the application?",
         default: this.user.git.name()
       },
       {
