@@ -21,12 +21,12 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "package-json": "^7.0.0",
-    "yeoman-generator": "^5.4.2",
+    "yeoman-generator": "^5.5.2",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.3",
-    "jest": "^27.4.0",
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^6.2.0"
   }
