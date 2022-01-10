@@ -4,19 +4,6 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 
-	<App id="app">
-		<MessagePage
-			title="{i18n>app_title}"
-			text="{i18n>app_title}"
-			icon="sap-icon://accept"
-			id="page"
-			description="{i18n>app_description}">
-			<buttons>
-				<Button
-					text="{i18n>btn_text}"
-					press="sayHello" />
-			</buttons>
-		</MessagePage>
-	</App>
+	<App id="app" />
 
 </mvc:View>
