@@ -60,7 +60,7 @@
 
 		"routing": {
 			"config": {
-				"routerClass": "sap.ui.core.routing.Router",
+				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "<%= appId %>.view",
 				"controlId": "app",
