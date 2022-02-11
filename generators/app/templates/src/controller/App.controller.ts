@@ -1,10 +1,10 @@
-import Controller from "sap/ui/core/mvc/Controller";
+import BaseController from "<%= appURI %>/controller/BaseController";
 import AppComponent from "../Component";
 
 /**
  * @namespace <%= appId %>.controller
  */
-export default class App extends Controller {
+export default class App extends BaseController {
 
 	public onInit() : void {
 		// apply content density mode to root view
