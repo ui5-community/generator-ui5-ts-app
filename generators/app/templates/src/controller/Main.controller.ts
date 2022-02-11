@@ -1,5 +1,5 @@
 import MessageBox from "sap/m/MessageBox";
-import Controller from "sap/ui/core/mvc/Controller";
+import BaseController from "<%= appURI %>/controller/BaseController";
 
 /**
  * @namespace <%= appId %>.controller
