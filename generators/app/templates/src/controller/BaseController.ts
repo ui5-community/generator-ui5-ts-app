@@ -7,7 +7,7 @@ import View from "sap/ui/core/mvc/View";
 import Router from "sap/ui/core/routing/Router";
 
 /**
- * @namespace com.myorg.myapp.controller
+ * @namespace <%= appId %>.controller
  */
 export default class BaseController extends Controller {
 
@@ -17,7 +17,7 @@ export default class BaseController extends Controller {
 	 * @param {string} sName the model name
 	 * @returns {sap.ui.model.Model} the model instance
 	 */
-	public getModel(sName: string): Model {
+	public getModel(sName?: string): Model {
 		return this.getView().getModel(sName);
 	}
 
@@ -28,7 +28,7 @@ export default class BaseController extends Controller {
 	 * @param {string} sName the model name
 	 * @returns {sap.ui.mvc.View} the view instance
 	 */
-	public setModel(oModel: Model, sName: string): View {
+	public setModel(oModel: Model, sName?: string): View {
 		return this.getView().setModel(oModel, sName);
 	}
 
