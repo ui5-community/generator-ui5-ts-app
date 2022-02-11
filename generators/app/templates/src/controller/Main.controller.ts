@@ -4,7 +4,7 @@ import BaseController from "<%= appURI %>/controller/BaseController";
 /**
  * @namespace <%= appId %>.controller
  */
-export default class Main extends Controller {
+export default class Main extends BaseController {
 
 	public sayHello() : void {
 		MessageBox.show("Hello World!");
