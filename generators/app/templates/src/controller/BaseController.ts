@@ -14,7 +14,7 @@ export default class BaseController extends Controller {
 	/**
 	 * Convenience method for getting the view model by name in every controller of the application.
 	 * @public
-	 * @param {string} sName? the model name
+	 * @param [sName] the model name
 	 * @returns {sap.ui.model.Model} the model instance
 	 */
 	public getModel(sName?: string) : Model {
@@ -24,8 +24,8 @@ export default class BaseController extends Controller {
 	/**
 	 * Convenience method for setting the view model in every controller of the application.
 	 * @public
-	 * @param {sap.ui.model.Model} oModel the model instance
-	 * @param {string} sName? the model name
+	 * @param oModel the model instance
+	 * @param [sName] the model name
 	 * @returns {sap.ui.mvc.View} the view instance
 	 */
 	public setModel(oModel: Model, sName?: string) : View {
@@ -44,9 +44,9 @@ export default class BaseController extends Controller {
 	/**
 	 * Method for navigation to specific view
 	 * @public
-	 * @param {string} psTarget Parameter containing the string for the target navigation
-	 * @param {object} pmParameters? Parameters for navigation
-	 * @param {boolean} pbReplace? Defines if the hash should be replaced (no browser history entry) or set (browser history entry)
+	 * @param psTarget Parameter containing the string for the target navigation
+	 * @param [pmParameters] Parameters for navigation
+	 * @param [pbReplace] Defines if the hash should be replaced (no browser history entry) or set (browser history entry)
 	 */
 	public navTo(psTarget: string, pmParameters?: object, pbReplace?: boolean) : void {
 		this.getRouter().navTo(psTarget, pmParameters, pbReplace);
