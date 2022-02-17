@@ -1,4 +1,4 @@
-import BaseController from "<%= appURI %>/controller/BaseController";
+import BaseController from "./BaseController";
 import AppComponent from "../Component";
 
 /**
