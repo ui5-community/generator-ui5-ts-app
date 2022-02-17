@@ -1,21 +1,46 @@
 import Controller from "sap/ui/core/mvc/Controller";
-import History from "sap/ui/core/History";
 import UIComponent from "sap/ui/core/UIComponent";
+import AppComponent from "../Component";
 import Model from "sap/ui/model/Model";
-import ResourceBundle from "sap/ui/model/resource/ResourceModel";
-import View from "sap/ui/mvc/View";
+import ResourceModel from "sap/ui/model/resource/ResourceModel";
+import ResourceBundle from "sap/base/i18n/ResourceBundle";
 import Router from "sap/ui/core/routing/Router";
+import History from "sap/ui/core/routing/History";
 
 /**
  * @namespace <%= appId %>.controller
  */
-export default class BaseController extends Controller {
+export default abstract class BaseController extends Controller {
+
+	/**
+	 * Convenience method for accessing the component of the controller's view.
+	 * @returns The component of the controller's view
+	 */
+	public getOwnerComponent(): AppComponent {
+		return (super.getOwnerComponent() as AppComponent);
+	}
+
+	/**
+	 * Convenience method to get the components' router instance.
+	 * @returns The router instance
+	 */
+	public getRouter() : Router {
+		return UIComponent.getRouterFor(this);
+	}
+
+	/**
+	 * Convenience method for getting the i18n resource bundle of the component.
+	 * @returns The i18n resource bundle of the component
+	 */
+	public getResourceBundle(): ResourceBundle | Promise<ResourceBundle> {
+		const oModel = this.getOwnerComponent().getModel("i18n") as ResourceModel;
+		return oModel.getResourceBundle();
+	}
 
 	/**
 	 * Convenience method for getting the view model by name in every controller of the application.
-	 * @public
-	 * @param [sName] the model name
-	 * @returns {sap.ui.model.Model} the model instance
+	 * @param [sName] The model name
+	 * @returns The model instance
 	 */
 	public getModel(sName?: string) : Model {
 		return this.getView().getModel(sName);
@@ -23,46 +48,38 @@ export default class BaseController extends Controller {
 
 	/**
 	 * Convenience method for setting the view model in every controller of the application.
-	 * @public
-	 * @param oModel the model instance
-	 * @param [sName] the model name
-	 * @returns {sap.ui.mvc.View} the view instance
+	 * @param oModel The model instance
+	 * @param [sName] The model name
+	 * @returns The current base controller instance
 	 */
-	public setModel(oModel: Model, sName?: string) : View {
-		return this.getView().setModel(oModel, sName);
+	public setModel(oModel: Model, sName?: string) : BaseController {
+		this.getView().setModel(oModel, sName);
+		return this;
 	}
 
 	/**
-	 * Convenience method for getting the resource bundle.
+	 * Convenience method for triggering the navigation to a specific target.
 	 * @public
-	 * @returns {sap.ui.model.resource.ResourceModel} the resourceModel of the component
+	 * @param sName Target name
+	 * @param [oParameters] Navigation parameters
+	 * @param [bReplace] Defines if the hash should be replaced (no browser history entry) or set (browser history entry)
 	 */
-	public getResourceBundle() : ResourceBundle {
-		return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+	public navTo(sName: string, oParameters?: object, bReplace?: boolean) : void {
+		this.getRouter().navTo(sName, oParameters, undefined, bReplace);
 	}
 
 	/**
-	 * Method for navigation to specific view
-	 * @public
-	 * @param psTarget Parameter containing the string for the target navigation
-	 * @param [pmParameters] Parameters for navigation
-	 * @param [pbReplace] Defines if the hash should be replaced (no browser history entry) or set (browser history entry)
+	 * Convenience event handler for navigating back.
+	 * It there is a history entry we go one step back in the browser history
+	 * If not, it will replace the current entry of the browser history with the master route.
 	 */
-	public navTo(psTarget: string, pmParameters?: object, pbReplace?: boolean) : void {
-		this.getRouter().navTo(psTarget, pmParameters, pbReplace);
-	}
-
-	public onNavBack() : void {
+	public onNavBack(): void {
 		const sPreviousHash = History.getInstance().getPreviousHash();
-
 		if (sPreviousHash !== undefined) {
-			window.history.back();
+			window.history.go(-1);
 		} else {
-			this.getRouter().navTo("Main", {}, true /*no history*/);
+			this.getRouter().navTo("main", {}, undefined, true);
 		}
 	}
-	
-	public getRouter() : Router {
-		return UIComponent.getRouterFor(this);
-	}
+
 }
