@@ -5,8 +5,8 @@
 		"id": "<%= appId %>",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
-		"title": "{{app_title}}",
-		"description": "{{app_description}}",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
 		}
