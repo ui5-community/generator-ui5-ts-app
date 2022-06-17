@@ -12,7 +12,7 @@
         "rootDir": "./src",
         "outDir": "./dist",
         "baseUrl": "./",
-        "moduleResolution": "Node",
+        "moduleResolution": "node",
         "typeRoots": [
             "./node_modules/@types",
             "./node_modules/<%= tstypes %>"
