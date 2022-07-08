@@ -1,6 +1,6 @@
 import UIComponent from "sap/ui/core/UIComponent";
 import { support } from "sap/ui/Device";
-
+import models from "./model/models";
 
 /**
  * @namespace <%= appId %>
@@ -16,6 +16,8 @@ export default class Component extends UIComponent {
 	public init() : void {
 		// call the base component's init function
 		super.init();
+
+		this.setModel(models.createDeviceModel(), "device");
 
 		// create the views based on the url/hash
 		this.getRouter().initialize();
