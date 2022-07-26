@@ -112,6 +112,12 @@ module.exports = class extends Generator {
         name: "newdir",
         message: "Would you like to create a new directory for the application?",
         default: true
+      },
+      {
+        type: "confirm",
+        name: "initrepo",
+        message: "Would you like to initialize a local github repository for the application?",
+        default: true
       }
     ];
 
@@ -169,24 +175,26 @@ module.exports = class extends Generator {
   }
 
   end() {
-    this.spawnCommandSync("git", ["init", "--quiet"], {
-      cwd: this.destinationPath()
-    });
-    this.spawnCommandSync("git", ["add", "."], {
-      cwd: this.destinationPath()
-    });
-    this.spawnCommandSync(
-      "git",
-      [
-        "commit",
-        "--quiet",
-        "--allow-empty",
-        "-m",
-        "Initial commit"
-      ],
-      {
+    if (this.config.initrepo) {
+      this.spawnCommandSync("git", ["init", "--quiet"], {
         cwd: this.destinationPath()
-      }
-    );
+      });
+      this.spawnCommandSync("git", ["add", "."], {
+        cwd: this.destinationPath()
+      });
+      this.spawnCommandSync(
+        "git",
+        [
+          "commit",
+          "--quiet",
+          "--allow-empty",
+          "-m",
+          "Initial commit"
+        ],
+        {
+          cwd: this.destinationPath()
+        }
+      );
+    }
   }
 };
