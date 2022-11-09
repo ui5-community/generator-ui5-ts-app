@@ -1,12 +1,12 @@
 "use strict";
 const Generator = require("yeoman-generator");
 
-const chalk = require("chalk");
 const yosay = require("yosay");
 const path = require("path");
-const glob = require("glob");
 const semver = require("semver");
-const packageJson = require('package-json');
+
+// ES modules imports (see initializing hook)
+let chalk, glob, packageJson;
 
 module.exports = class extends Generator {
 
@@ -17,6 +17,12 @@ module.exports = class extends Generator {
       // disable the Yeoman 5 package-manager logic (auto install)!
       customInstallTask: "disabled"
     });
+  }
+
+  async initializing() {
+    chalk = (await import("chalk")).default;
+    glob = (await import("glob")).default;
+    packageJson = (await import("package-json")).default;
   }
 
   prompting() {
