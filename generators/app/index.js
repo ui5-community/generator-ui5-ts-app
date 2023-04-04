@@ -89,7 +89,9 @@ module.exports = class extends Generator {
         default: async (answers) => {
           const npmPackage = fwkDependencies[answers.framework];
           try {
-            return (await packageJson(npmPackage)).version;
+            return (await packageJson(npmPackage, {
+              version: "*" // use highest version, not latest!
+            })).version;
           } catch (ex) {
             chalk.red('Failed to lookup latest version for ${npmPackage}! Fallback to min version...')
             return minFwkVersion[answers.framework];
