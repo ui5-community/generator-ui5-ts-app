@@ -1,22 +1,19 @@
 {
-    "compilerOptions": {
-        "target": "es2022",
-        "module": "es2022",
-        "moduleResolution": "node",
-        "skipLibCheck": true,
-        "allowJs": true,
-        "strict": true,
-        "strictNullChecks": false,
-        "strictPropertyInitialization": false,
-        "rootDir": "./webapp",
-        "baseUrl": "./",
-        "typeRoots": [
-            "./node_modules/@types",
-            "./node_modules/<%= tstypes %>"
-        ],
-        "paths": {
-            "<%= appURI %>/*": ["./webapp/*"]
-        }
-    },
-    "include": ["./webapp/**/*"]
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "rootDir": "./webapp",
+    "baseUrl": "./",
+    "typeRoots": ["./node_modules/@types", "./node_modules/<%= tstypes %>"],
+    "paths": {
+      "<%= appURI %>/*": ["./webapp/*"]
+    }
+  },
+  "include": ["./webapp/**/*"]
 }
