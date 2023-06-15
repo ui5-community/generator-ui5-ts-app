@@ -1,0 +1,5 @@
+# Ignore test files
+test/*/
+
+# Ingore XMLViews since placeholders are used
+generators/app/templates/webapp/view/*.xml

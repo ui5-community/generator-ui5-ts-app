@@ -1,5 +1,6 @@
 # build results
 dist
+coverage
 
 # Logs
 logs

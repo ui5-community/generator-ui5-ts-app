@@ -12,6 +12,7 @@
 		description="{i18n>appDescription}">
 		<buttons>
 			<Button
+				id="helloButton"
 				text="{i18n>btnText}"
 				press="sayHello" />
 		</buttons>
