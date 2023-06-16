@@ -139,6 +139,9 @@ export default class extends Generator {
 
 			// CDN domain
 			this.config.set("cdnDomain", fwkCDNDomain[props.framework]);
+
+			// more relevant parameters
+			this.config.set("gte11150", semver.gte(props.frameworkVersion, "1.115.0"));
 		});
 	}
 
