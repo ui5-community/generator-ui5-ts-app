@@ -1,17 +1,12 @@
-# <%= namespace %>
+# UI5 Application <%= namespace %>
+
+Insert the purpose of this project and some interesting info here...
 
 ## Description
 
 This app demonstrates a TypeScript setup for developing UI5 applications. The central entry point for all information about using TypeScript with UI5 is at [https://sap.github.io/ui5-typescript](https://sap.github.io/ui5-typescript).
 
 **The template is inspired by the [`SAP-samples/ui5-typescript-helloworld`](https://github.com/SAP-samples/ui5-typescript-helloworld) project which also contains [a detailed step-by-step guide](https://github.com/SAP-samples/ui5-typescript-helloworld/blob/main/step-by-step.md). It explains how this setup is created and how all the bits and pieces fit together.**
-
-| :point_up: Overview of TypeScript-related Entities                                                                                                                                                                                                                                  |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The UI5 type definitions (`*.d.ts` files) are loaded as dev dependency from [npm](https://www.npmjs.com/package/@openui5/types). They are a work in progress, so while they should be working well already, we are still improving them, which might also lead to breaking changes. |
-| The file [tsconfig.json](tsconfig.json) contains the configuration for the TypeScript compilation, including a reference to the UI5 `*.d.ts` files.                                                                                                                                 |
-| The project is using the `ui5-tooling-transpile` extensions to compile TypeScript and to convert from the ES6 module and class syntax used in the source files to the classic UI5 module loading and class definition syntax (`sap.ui.define(...)` and `superClass.extend(...)`).   |
-| Both, the TypeScript compilation and the ES6 syntax transformation, are executed by Babel, as configured in the file [.babelrc.json](.babelrc.json)                                                                                                                                 |
 
 ## Requirements
 
@@ -22,7 +17,7 @@ Either [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) for depende
 Use `npm` (or `yarn`) to install the dependencies:
 
 ```sh
-npm i
+npm install
 ```
 
 (To use yarn, just do `yarn` instead.)
