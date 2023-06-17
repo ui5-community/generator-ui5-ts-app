@@ -23,11 +23,15 @@
 		"typescript"
 	],
 	"author": "Peter Muessig",
+	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ui5-community/generator-ui5-ts-app.git"
 	},
-	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ui5-community/generator-ui5-ts-app/issues"
+	},
+	"homepage": "https://github.com/ui5-community/generator-ui5-ts-app#readme",
 	"dependencies": {
 		"chalk": "^5.2.0",
 		"glob": "^10.2.7",

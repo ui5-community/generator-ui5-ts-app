@@ -10,7 +10,7 @@ import packageJson from "package-json";
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 export default class extends Generator {
-	static displayName = "Create a new UI5 TypeScript application";
+	static displayName = "Create a new UI5 application with TypeScript";
 
 	constructor(args, opts) {
 		super(args, opts, {
@@ -43,29 +43,16 @@ export default class extends Generator {
 		const prompts = [
 			{
 				type: "input",
-				name: "application",
-				message: "How do you want to name this application?",
-				validate: (s) => {
-					if (/^\d*[a-zA-Z][a-zA-Z0-9]*$/g.test(s)) {
-						return true;
-					}
-
-					return "Please use alpha numeric characters only for the application name.";
-				},
-				default: "myapp",
-			},
-			{
-				type: "input",
 				name: "namespace",
-				message: "Which namespace do you want to use?",
+				message: "What is the namespace of your application?",
 				validate: (s) => {
-					if (/^[a-zA-Z0-9_.]*$/g.test(s)) {
+					if (/^[a-zA-Z0-9][a-zA-Z0-9_.]*$/g.test(s)) {
 						return true;
 					}
 
 					return "Please use alpha numeric characters and dots only for the namespace.";
 				},
-				default: "com.myorg",
+				default: "com.myorg.myapp",
 			},
 			{
 				type: "list",
@@ -122,7 +109,7 @@ export default class extends Generator {
 		return this.prompt(prompts).then((props) => {
 			// use the namespace and the application name as new subdirectory
 			if (props.newdir) {
-				this.destinationRoot(this.destinationPath(`${props.namespace}.${props.application}`));
+				this.destinationRoot(this.destinationPath(`${props.namespace}`));
 			}
 			delete props.newdir;
 
@@ -134,8 +121,8 @@ export default class extends Generator {
 			this.config.set("tstypesVersion", props.frameworkVersion);
 
 			// appId + appURI
-			this.config.set("appId", `${props.namespace}.${props.application}`);
-			this.config.set("appURI", `${props.namespace.split(".").join("/")}/${props.application}`);
+			this.config.set("appId", `${props.namespace}`);
+			this.config.set("appURI", `${props.namespace.split(".").join("/")}`);
 
 			// CDN domain
 			this.config.set("cdnDomain", fwkCDNDomain[props.framework]);
