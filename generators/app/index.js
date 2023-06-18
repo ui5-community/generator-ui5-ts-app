@@ -130,6 +130,13 @@ export default class extends Generator {
 			// CDN domain
 			this.config.set("cdnDomain", fwkCDNDomain[props.framework]);
 
+			// default theme
+			if (semver.gte(props.frameworkVersion, "1.108.0")) {
+				this.config.set("defaultTheme", "sap_horizon");
+			} else {
+				this.config.set("defaultTheme", "sap_fiori_3");
+			}
+
 			// more relevant parameters
 			this.config.set("gte11150", semver.gte(props.frameworkVersion, "1.115.0"));
 		});
