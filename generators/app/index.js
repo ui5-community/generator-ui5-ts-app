@@ -1,11 +1,14 @@
-import Generator from "yeoman-generator";
-import yosay from "yosay";
 import path from "path";
 import url from "url";
-import semver from "semver";
-import { glob } from "glob";
+
+// all below required dependencies need to be listed
+// as dependencies in the package.json (not devDeps!)
+import Generator from "yeoman-generator";
+import yosay from "yosay";
 import chalk from "chalk";
+import { glob } from "glob";
 import packageJson from "package-json";
+import semver from "semver";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
@@ -44,7 +47,7 @@ export default class extends Generator {
 			{
 				type: "input",
 				name: "namespace",
-				message: "What is the namespace of your application?",
+				message: "Enter your application id (namespace in dot notation)?",
 				validate: (s) => {
 					if (/^[a-zA-Z0-9][a-zA-Z0-9_.]*$/g.test(s)) {
 						return true;
@@ -117,7 +120,7 @@ export default class extends Generator {
 			this.config.set(props);
 
 			// determine the ts-types and version
-			this.config.set("tstypes", `@${props.framework.toLowerCase()}/ts-types-esm`);
+			this.config.set("tstypes", getTypePackageFor(props.framework, props.frameworkVersion));
 			this.config.set("tstypesVersion", props.frameworkVersion);
 
 			// appId + appURI
