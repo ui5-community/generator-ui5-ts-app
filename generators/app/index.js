@@ -18,7 +18,7 @@ export default class extends Generator {
 	constructor(args, opts) {
 		super(args, opts, {
 			// disable the Yeoman 5 package-manager logic (auto install)!
-			customInstallTask: "disabled",
+			customInstallTask: "disabled"
 		});
 	}
 
@@ -30,12 +30,12 @@ export default class extends Generator {
 
 		const minFwkVersion = {
 			OpenUI5: "1.90.1", //"1.60.0",
-			SAPUI5: "1.90.0", //"1.77.0"
+			SAPUI5: "1.90.0" //"1.77.0"
 		};
 
 		const fwkCDNDomain = {
 			OpenUI5: "sdk.openui5.org",
-			SAPUI5: "ui5.sap.com",
+			SAPUI5: "ui5.sap.com"
 		};
 
 		const getTypePackageFor = function (framework, version = "99.99.99") {
@@ -55,14 +55,14 @@ export default class extends Generator {
 
 					return "Please use alpha numeric characters and dots only for the namespace.";
 				},
-				default: "com.myorg.myapp",
+				default: "com.myorg.myapp"
 			},
 			{
 				type: "list",
 				name: "framework",
 				message: "Which framework do you want to use?",
 				choices: ["OpenUI5", "SAPUI5"],
-				default: "OpenUI5",
+				default: "OpenUI5"
 			},
 			{
 				when: (response) => {
@@ -77,7 +77,7 @@ export default class extends Generator {
 					try {
 						return (
 							await packageJson(npmPackage, {
-								version: "*", // use highest version, not latest!
+								version: "*" // use highest version, not latest!
 							})
 						).version;
 					} catch (ex) {
@@ -87,26 +87,26 @@ export default class extends Generator {
 				},
 				validate: (v) => {
 					return (v && semver.valid(v) && semver.gte(v, this._minFwkVersion)) || chalk.red(`Framework requires the min version ${this._minFwkVersion} due to the availability of the ts-types!`);
-				},
+				}
 			},
 			{
 				type: "input",
 				name: "author",
 				message: "Who is the author of the application?",
-				default: this.user.git.name(),
+				default: this.user.git.name()
 			},
 			{
 				type: "confirm",
 				name: "newdir",
 				message: "Would you like to create a new directory for the application?",
-				default: true,
+				default: true
 			},
 			{
 				type: "confirm",
 				name: "initrepo",
 				message: "Would you like to initialize a local github repository for the application?",
-				default: true,
-			},
+				default: true
+			}
 		];
 
 		return this.prompt(prompts).then((props) => {
@@ -149,7 +149,7 @@ export default class extends Generator {
 		glob
 			.sync("**", {
 				cwd: this.sourceRoot(),
-				nodir: true,
+				nodir: true
 			})
 			.forEach((file) => {
 				const sOrigin = this.templatePath(file);
@@ -162,20 +162,20 @@ export default class extends Generator {
 	install() {
 		this.config.set("setupCompleted", true);
 		this.spawnCommandSync("npm", ["install"], {
-			cwd: this.destinationPath(),
+			cwd: this.destinationPath()
 		});
 	}
 
 	end() {
 		if (this.config.initrepo) {
 			this.spawnCommandSync("git", ["init", "--quiet"], {
-				cwd: this.destinationPath(),
+				cwd: this.destinationPath()
 			});
 			this.spawnCommandSync("git", ["add", "."], {
-				cwd: this.destinationPath(),
+				cwd: this.destinationPath()
 			});
 			this.spawnCommandSync("git", ["commit", "--quiet", "--allow-empty", "-m", "Initial commit"], {
-				cwd: this.destinationPath(),
+				cwd: this.destinationPath()
 			});
 		}
 	}

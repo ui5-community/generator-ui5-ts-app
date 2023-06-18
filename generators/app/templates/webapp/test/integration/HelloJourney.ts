@@ -10,8 +10,8 @@ opaTest("Should open the Hello dialog", function () {
 	// Arrangements
 	onTheMainPage.iStartMyUIComponent({
 		componentConfig: {
-			name: "<%= appId %>",
-		},
+			name: "<%= appId %>"
+		}
 	});
 
 	// Actions
@@ -34,8 +34,8 @@ opaTest("Should close the Hello dialog", function () {
 	// Arrangements
 	onTheMainPage.iStartMyUIComponent({
 		componentConfig: {
-			name: "<%= appId %>",
-		},
+			name: "<%= appId %>"
+		}
 	});
 
 	// Actions

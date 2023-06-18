@@ -20,6 +20,7 @@ export default class Component extends UIComponent {
 		// call the base component's init function
 		super.init();
 
+		// create the device model
 		this.setModel(models.createDeviceModel(), "device");
 
 		// create the views based on the url/hash

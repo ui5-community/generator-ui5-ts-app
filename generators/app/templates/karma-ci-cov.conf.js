@@ -3,7 +3,7 @@ module.exports = function (config) {
 	config.set({
 		reporters: ["progress", "coverage"],
 		preprocessors: {
-			"webapp/**/*.ts": ["ui5-transpile"],
+			"webapp/**/*.ts": ["ui5-transpile"]
 		},
 		coverageReporter: {
 			dir: "coverage",
@@ -11,8 +11,8 @@ module.exports = function (config) {
 				{ type: "html", subdir: "report-html" },
 				{ type: "cobertura", subdir: ".", file: "cobertura.txt" },
 				{ type: "lcovonly", subdir: ".", file: "report-lcovonly.txt" },
-				{ type: "text-summary" },
-			],
-		},
+				{ type: "text-summary" }
+			]
+		}
 	});
 };

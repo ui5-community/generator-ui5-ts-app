@@ -1,5 +1,6 @@
 {
 	"singleQuote": false,
+	"trailingComma": "none",
 	"overrides": [
 		{
 			"files": ["*.xml"],
