@@ -167,7 +167,7 @@ export default class extends Generator {
 	}
 
 	end() {
-		if (this.config.initrepo) {
+		if (this.config.get("initrepo")) {
 			this.spawnCommandSync("git", ["init", "--quiet"], {
 				cwd: this.destinationPath()
 			});
