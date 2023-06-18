@@ -47,7 +47,7 @@ export default class extends Generator {
 			{
 				type: "input",
 				name: "namespace",
-				message: "Enter your application id (namespace in dot notation)?",
+				message: "Enter your application id (namespace)?",
 				validate: (s) => {
 					if (/^[a-zA-Z0-9][a-zA-Z0-9_.]*$/g.test(s)) {
 						return true;
