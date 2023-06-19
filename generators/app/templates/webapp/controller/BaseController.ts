@@ -11,20 +11,19 @@ import History from "sap/ui/core/routing/History";
  * @namespace <%= appId %>.controller
  */
 export default abstract class BaseController extends Controller {
-
 	/**
 	 * Convenience method for accessing the component of the controller's view.
 	 * @returns The component of the controller's view
 	 */
 	public getOwnerComponent(): AppComponent {
-		return (super.getOwnerComponent() as AppComponent);
+		return super.getOwnerComponent() as AppComponent;
 	}
 
 	/**
 	 * Convenience method to get the components' router instance.
 	 * @returns The router instance
 	 */
-	public getRouter() : Router {
+	public getRouter(): Router {
 		return UIComponent.getRouterFor(this);
 	}
 
@@ -42,7 +41,7 @@ export default abstract class BaseController extends Controller {
 	 * @param [sName] The model name
 	 * @returns The model instance
 	 */
-	public getModel(sName?: string) : Model {
+	public getModel(sName?: string): Model {
 		return this.getView().getModel(sName);
 	}
 
@@ -52,7 +51,7 @@ export default abstract class BaseController extends Controller {
 	 * @param [sName] The model name
 	 * @returns The current base controller instance
 	 */
-	public setModel(oModel: Model, sName?: string) : BaseController {
+	public setModel(oModel: Model, sName?: string): BaseController {
 		this.getView().setModel(oModel, sName);
 		return this;
 	}
@@ -64,7 +63,7 @@ export default abstract class BaseController extends Controller {
 	 * @param [oParameters] Navigation parameters
 	 * @param [bReplace] Defines if the hash should be replaced (no browser history entry) or set (browser history entry)
 	 */
-	public navTo(sName: string, oParameters?: object, bReplace?: boolean) : void {
+	public navTo(sName: string, oParameters?: object, bReplace?: boolean): void {
 		this.getRouter().navTo(sName, oParameters, undefined, bReplace);
 	}
 
@@ -81,5 +80,4 @@ export default abstract class BaseController extends Controller {
 			this.getRouter().navTo("main", {}, undefined, true);
 		}
 	}
-
 }
