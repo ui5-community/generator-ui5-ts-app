@@ -34,15 +34,16 @@
 	"homepage": "https://github.com/ui5-community/generator-ui5-ts-app#readme",
 	"dependencies": {
 		"chalk": "^5.2.0",
-		"glob": "^10.2.7",
+		"glob": "^10.3.0",
 		"package-json": "^8.1.1",
 		"semver": "^7.5.2",
+		"upath": "^2.0.1",
 		"yeoman-generator": "^5.9.0",
 		"yosay": "^2.0.2"
 	},
 	"devDependencies": {
 		"@prettier/plugin-xml": "^2.2.0",
-		"eslint": "^8.42.0",
+		"eslint": "^8.43.0",
 		"eslint-plugin-jsdoc": "^46.2.6",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",

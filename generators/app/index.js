@@ -1,4 +1,3 @@
-import path from "path";
 import url from "url";
 
 // all below required dependencies need to be listed
@@ -9,6 +8,7 @@ import chalk from "chalk";
 import { glob } from "glob";
 import packageJson from "package-json";
 import semver from "semver";
+import upath from "upath";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
@@ -145,7 +145,7 @@ export default class extends Generator {
 	writing() {
 		const oConfig = this.config.getAll();
 
-		this.sourceRoot(path.join(__dirname, "templates"));
+		this.sourceRoot(upath.join(__dirname, "templates"));
 		glob
 			.sync("**", {
 				cwd: this.sourceRoot(),
