@@ -104,7 +104,7 @@ export default class extends Generator {
 			{
 				type: "confirm",
 				name: "initrepo",
-				message: "Would you like to initialize a local github repository for the application?",
+				message: "Would you like to initialize a local git repository for the application?",
 				default: true
 			}
 		];
