@@ -34,8 +34,6 @@
 			"minUI5Version": "<%= frameworkVersion %>",
 			"libs": {
 				"sap.ui.core": {},
-				"sap.ui.layout": {},
-				"sap.ui.unified": {},
 				"sap.m": {}
 			}
 		},
