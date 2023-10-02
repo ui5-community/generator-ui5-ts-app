@@ -137,6 +137,13 @@ export default class extends Generator {
 				this.config.set("defaultTheme", "sap_fiori_3");
 			}
 
+			// set qunit coverage file
+			if (semver.gte(props.frameworkVersion, "1.113.0")) {
+				this.config.set("qunitCoverageFile", "qunit-coverage-istanbul.js");
+			} else {
+				this.config.set("qunitCoverageFile", "qunit-coverage.js");
+			}
+
 			// more relevant parameters
 			this.config.set("gte11150", semver.gte(props.frameworkVersion, "1.115.0"));
 		});
