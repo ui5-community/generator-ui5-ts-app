@@ -14,6 +14,7 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 export default class extends Generator {
 	static displayName = "Create a new UI5 application with TypeScript";
+	static nestedGenerators = ["wdi5"]; // add wdi5 support
 
 	constructor(args, opts) {
 		super(args, opts, {
