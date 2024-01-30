@@ -33,6 +33,6 @@
 		"rimraf": "^5.0.5",
 		"typescript": "^5.3.3",
 		"ui5-middleware-livereload": "^3.0.2",
-		"ui5-tooling-transpile": "^3.3.3",
+		"ui5-tooling-transpile": "^3.3.3"
 	}
 }
