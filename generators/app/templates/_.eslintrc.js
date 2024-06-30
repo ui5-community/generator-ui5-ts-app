@@ -3,19 +3,15 @@ module.exports = {
 	env: {
 		browser: true,
 		es6: true,
-		node: true,
+		node: true
 	},
-	extends: [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/recommended-requiring-type-checking",
-	],
+	extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/recommended-requiring-type-checking"],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
 		tsconfigRootDir: __dirname,
 		project: ["./tsconfig.json"],
-		sourceType: "module",
+		sourceType: "module"
 	},
 	plugins: ["@typescript-eslint"],
-	ignorePatterns: [".eslintrc.js"],
+	ignorePatterns: [".eslintrc.js", "webapp/test/e2e/**"]
 };
