@@ -14,5 +14,5 @@ export default tseslint.config(eslint.configs.recommended, ...tseslint.configs.r
 			tsconfigRootDir: import.meta.dirname
 		}
 	},
-	ignores: ["**/.eslintignore.js", "**/eslint.config.mjs"]
+	ignores: ["eslint.config.mjs", "webapp/test/e2e/**"]
 });
