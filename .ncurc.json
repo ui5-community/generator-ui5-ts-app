@@ -1,0 +1,3 @@
+{
+	"reject": ["yeoman-generator", "yeoman-assert", "yeoman-test", "yosay"]
+}
