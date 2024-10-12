@@ -13,7 +13,7 @@
 			id="sap-ui-bootstrap"
 			src="https://<%= cdnDomain %>/<%= frameworkVersion %>/resources/sap-ui-core.js"
 			data-sap-ui-resource-roots='{
-				"<%= appId %>": "./"
+				"<%= namespace %>": "./"
 			}'
 			data-sap-ui-theme="<%= defaultTheme %>"
 			data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
@@ -26,6 +26,6 @@
 	</head>
 
 	<body class="sapUiBody">
-		<div data-sap-ui-component data-name="<%= appId %>"></div>
+		<div data-sap-ui-component data-name="<%= namespace %>"></div>
 	</body>
 </html>

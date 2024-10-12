@@ -1,5 +1,5 @@
 {
-	"name": "<%= namespace %>",
+	"name": "<%= appId %>",
 	"version": "1.0.0",
 	"description": "UI5 Application: <%= namespace %>",
 	"author": "<%= author %>",
