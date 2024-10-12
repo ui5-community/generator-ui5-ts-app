@@ -50,11 +50,11 @@ export default class extends Generator {
 				name: "namespace",
 				message: "Enter your application id (namespace)?",
 				validate: (s) => {
-					if (/^[a-zA-Z0-9][a-zA-Z0-9_.]*$/g.test(s)) {
+					if (/^[a-z0-9][a-z0-9_.]*$/g.test(s)) {
 						return true;
 					}
 
-					return "Please use alpha numeric characters and dots only for the namespace.";
+					return "Please use lowercase alpha numeric characters and dots only for the namespace.";
 				},
 				default: "com.myorg.myapp"
 			},
