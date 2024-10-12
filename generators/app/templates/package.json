@@ -14,6 +14,7 @@
 		"start:dist-cdn": "npm run start-cdn -- --config ui5-dist.yaml",
 		"ts-typecheck": "tsc --noEmit",
 		"lint": "eslint webapp",
+		"ui5lint": "ui5lint",
 		"karma": "karma start",
 		"karma-ci": "karma start karma-ci.conf.js",
 		"karma-ci-cov": "karma start karma-ci-cov.conf.js",
@@ -22,16 +23,17 @@
 	"devDependencies": {
 		"<%= tstypes %>": "<%= tstypesVersion %>",
 		"@ui5/cli": "^4.0.8",
+		"@ui5/linter": "^1.0.2",
 		"eslint": "^9.12.0",
-		"typescript-eslint": "^8.8.0",
-		"globals": "^15.10.0",
+		"typescript-eslint": "^8.8.1",
+		"globals": "^15.11.0",
 		"karma": "^6.4.4",
 		"karma-chrome-launcher": "^3.2.0",
 		"karma-coverage": "^2.2.1",
 		"karma-ui5": "^4.0.1",
 		"karma-ui5-transpile": "^3.5.0",
 		"rimraf": "^6.0.1",
-		"typescript": "^5.6.2",
+		"typescript": "^5.6.3",
 		"ui5-middleware-livereload": "^3.1.0",
 		"ui5-tooling-transpile": "^3.5.0"
 	}
