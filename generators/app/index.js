@@ -125,8 +125,9 @@ export default class extends Generator {
 			this.config.set("tstypesVersion", props.frameworkVersion);
 
 			// appId + appURI
-			this.config.set("appId", `${props.namespace}`);
-			this.config.set("appURI", `${props.namespace.split(".").join("/")}`);
+			const parts = props.namespace.split(".");
+			this.config.set("appId", parts[parts.length - 1]);
+			this.config.set("appURI", parts.join("/"));
 
 			// CDN domain
 			this.config.set("cdnDomain", fwkCDNDomain[props.framework]);

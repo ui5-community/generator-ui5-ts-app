@@ -1,7 +1,7 @@
 import BaseController from "./BaseController";
 
 /**
- * @namespace <%= appId %>.controller
+ * @namespace <%= namespace %>.controller
  */
 export default class App extends BaseController {
 	public onInit(): void {
