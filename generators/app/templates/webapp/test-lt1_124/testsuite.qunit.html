@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
@@ -6,13 +6,8 @@
 		<meta http-equiv="expires" content="0" />
 		<meta charset="utf-8" />
 		<title>QUnit test suite for the UI5 Application: <%= namespace %></title>
-		<script
-			src="../resources/sap/ui/test/starter/createSuite.js"
-			data-sap-ui-testsuite="test-resources/<%= appURI %>/testsuite.qunit"
-			data-sap-ui-resource-roots='{
-				"test-resources.<%= appId %>": "./"
-			}'
-		></script>
+		<script src="../resources/sap/ui/qunit/qunit-redirect.js"></script>
+		<script src="testsuite.qunit.js" data-sap-ui-testsuite></script>
 	</head>
 	<body></body>
 </html>
