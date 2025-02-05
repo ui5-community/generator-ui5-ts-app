@@ -1,6 +1,8 @@
 # build results
 dist
 coverage
+report
+.nyc_output
 
 # Logs
 logs
