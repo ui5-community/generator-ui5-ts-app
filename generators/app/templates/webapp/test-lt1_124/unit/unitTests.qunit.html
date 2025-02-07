@@ -8,12 +8,17 @@
 		<title>Unit tests for the UI5 Application: <%= namespace %></title>
 		<script
 			id="sap-ui-bootstrap"
-			src="../../resources/sap-ui-core.js"
+			src="../../resources/sap-ui-core.js"<% if (gte1_120_0) { %>
 			data-sap-ui-resource-roots='{
 				"<%= appId %>": "../../",
 				"unit": "."
 			}'
-			data-sap-ui-compat-version="edge"
+			data-sap-ui-compat-version="edge"<% } else { %>
+			data-sap-ui-resourceroots='{
+				"<%= appId %>": "../../",
+				"unit": "."
+			}'
+			data-sap-ui-compatVersion="edge"<% } %>
 			data-sap-ui-async="true"
 		></script>
 		<link rel="stylesheet" type="text/css" href="../../resources/sap/ui/thirdparty/qunit-2.css" />

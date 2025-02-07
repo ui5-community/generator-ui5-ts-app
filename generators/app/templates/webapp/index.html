@@ -11,14 +11,20 @@
 		<script
 			id="sap-ui-bootstrap"
 			src="resources/sap-ui-core.js"
+			data-sap-ui-theme="<%= defaultTheme %>"<% if (gte1_120_0) { %>
 			data-sap-ui-resource-roots='{
 				"<%= appId %>": "./"
 			}'
-			data-sap-ui-theme="<%= defaultTheme %>"
 			data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
-			data-sap-ui-async="true"
 			data-sap-ui-compat-version="edge"
-			data-sap-ui-frame-options="trusted"
+			data-sap-ui-frame-options="trusted"<% } else { %>
+			data-sap-ui-resourceroots='{
+				"<%= appId %>": "./"
+			}'
+			data-sap-ui-onInit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-frameOptions="trusted"<% } %>
+			data-sap-ui-async="true"
 			data-sap-ui-xx-waitForTheme="true"
 			data-sap-ui-xx-supportedLanguages="en,de"
 		></script>
