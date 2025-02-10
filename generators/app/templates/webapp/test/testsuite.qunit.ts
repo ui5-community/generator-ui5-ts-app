@@ -6,7 +6,7 @@ export default {
 			version: 2
 		},
 		sinon: {
-			version: 1
+			version: 4
 		},
 		ui5: {
 			language: "EN",
