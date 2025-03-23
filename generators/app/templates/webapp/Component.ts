@@ -9,6 +9,7 @@ import * as Device from "sap/ui/Device"; // for UI5 >= 1.115.0 use: import Devic
 export default class Component extends UIComponent {
 	public static metadata = {
 		manifest: "json",
+		interfaces: ["sap.ui.core.IAsyncContentCreation"]
 	};
 
 	private contentDensityClass: string;
