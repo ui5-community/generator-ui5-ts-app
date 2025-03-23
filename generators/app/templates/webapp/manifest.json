@@ -26,7 +26,6 @@
 		"rootView": {
 			"viewName": "<%= appId %>.view.App",
 			"type": "XML",
-			"async": true,
 			"id": "app"
 		},
 
@@ -49,7 +48,8 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "<%= appId %>.i18n.i18n"
+					"bundleName": "<%= appId %>.i18n.i18n",
+					"async": true
 				}
 			}
 		},
@@ -60,8 +60,7 @@
 				"viewType": "XML",
 				"viewPath": "<%= appId %>.view",
 				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
+				"controlAggregation": "pages"
 			},
 			"routes": [
 				{
