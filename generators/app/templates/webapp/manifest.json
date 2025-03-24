@@ -49,6 +49,12 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "<%= appId %>.i18n.i18n",
+					"supportedLocales": [
+						"",
+						"en",
+						"de"
+					],
+					"fallbackLocale": "",
 					"async": true
 				}
 			}
