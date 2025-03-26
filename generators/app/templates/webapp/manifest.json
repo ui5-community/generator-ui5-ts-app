@@ -50,11 +50,10 @@
 				"settings": {
 					"bundleName": "<%= appId %>.i18n.i18n",
 					"supportedLocales": [
-						"",
 						"en",
 						"de"
 					],
-					"fallbackLocale": "",
+					"fallbackLocale": "en",
 					"async": true
 				}
 			}
