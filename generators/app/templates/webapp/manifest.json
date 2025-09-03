@@ -1,5 +1,5 @@
 {
-	"_version": "1.12.0",
+	"_version": "1.21.0",
 
 	"sap.app": {
 		"id": "<%= appId %>",
@@ -63,8 +63,9 @@
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
+				"type": "View",
 				"viewType": "XML",
-				"viewPath": "<%= appId %>.view",
+				"path": "<%= appId %>.view",
 				"controlId": "app",
 				"controlAggregation": "pages"
 			},
@@ -77,8 +78,8 @@
 			],
 			"targets": {
 				"main": {
-					"viewId": "main",
-					"viewName": "Main"
+					"id": "main",
+					"name": "Main"
 				}
 			}
 		}
