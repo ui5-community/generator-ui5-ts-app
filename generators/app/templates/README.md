@@ -32,7 +32,7 @@ npm start
 
 As shown in the terminal after executing this command, the app is then running on http://localhost:8080/index.html. A browser window with this URL should automatically open.
 
-(When using yarn, do `yarn start` instead.)
+(When using yarn, do `yarn start` instead. Also for all commands below, you can just replace `npm` by `yarn` in this case.)
 
 ## Debug the App
 
@@ -78,7 +78,33 @@ With the self-contained build, the bootstrap URL in `index.html` has already bee
 
 (When using yarn, do `yarn build:opt` and `yarn start:dist` instead.)
 
-## Check the Code
+## Test the App
+
+### Run the Tests
+
+To run all tests, do:
+
+```sh
+npm test
+```
+
+This includes linting and running the unit and integration tests. After the tests have completed, the task ends, so this can be used for automated tests in a continuous integration scenario.
+
+### Run Specific Tests Manually
+
+You can manually open test pages by running `npm start` and then opening one of the following URLs in your browser:
+<% if (lt1_124_0) { %>
+
+- Unit tests: http://localhost:8080/test/unit/unitTests.qunit.html
+- Integration tests: http://localhost:8080/test/integration/opaTests.qunit.html
+- Both kinds of tests: http://localhost:8080/test/testsuite.qunit.html
+  <% } else { %>
+- Unit tests: http://localhost:8080/test/Test.qunit.html?testsuite=test-resources/com/myorg/myapp/testsuite.qunit&test=unit/unitTests
+- Integration tests: http://localhost:8080/test/Test.qunit.html?testsuite=test-resources%2Fcom%2Fmyorg%2Fmyapp%2Ftestsuite.qunit&test=integration%2FopaTests
+- Both kinds of tests: http://localhost:8080/test-resources/sap/ui/qunit/testrunner.html?testpage=%2Ftest%2Ftestsuite.qunit.html&autostart=true
+  <% } %>
+
+### Check the Code
 
 Do the following to run a TypeScript check:
 
@@ -93,8 +119,6 @@ To lint the TypeScript code, do:
 ```sh
 npm run lint
 ```
-
-(Again, when using yarn, do `yarn ts-typecheck` and `yarn lint` instead.)
 
 ## License
 
