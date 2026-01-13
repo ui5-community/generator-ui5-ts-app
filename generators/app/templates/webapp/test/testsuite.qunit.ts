@@ -1,3 +1,6 @@
+<% if (gte1_142_0) { -%>
+import type {SuiteConfiguration} from "sap/ui/test/starter/config";
+<% } -%>
 export default {
 	name: "QUnit test suite for the UI5 Application: <%= namespace %>",
 	defaults: {
@@ -13,8 +16,8 @@ export default {
 			theme: "<%= defaultTheme %>"
 		},
 		coverage: {
-			only: "<%= appURI %>/",
-			never: "test-resources/<%= appURI %>/"
+			only: ["<%= appURI %>/"],
+			never: ["test-resources/<%= appURI %>/"]
 		},
 		loader: {
 			paths: {
@@ -30,4 +33,4 @@ export default {
 			title: "Integration tests for <%= namespace %>"
 		}
 	}
-};
+}<% if (gte1_142_0) { -%> satisfies SuiteConfiguration<% }  -%>;
