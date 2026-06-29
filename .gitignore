@@ -1,6 +1,7 @@
 # Hidden Files
 _
 test/*/
+test/com.myorg.myapp
 
 # Logs
 logs
