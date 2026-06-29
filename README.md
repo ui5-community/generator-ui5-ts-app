@@ -50,6 +50,16 @@ Please use the GitHub bug tracking system to post questions, bug reports or to c
 
 We welcome any type of contribution (code contributions, pull requests, issues) to this generator equally.
 
+### Development Setup
+
+```bash
+git clone https://github.com/ui5-community/generator-ui5-ts-app.git
+cd generator-ui5-ts-app
+npm run setup
+```
+
+`npm run setup` installs dependencies and sets up the git hooks (Husky pre-commit for formatting and linting). The project uses `ignore-scripts=true` in `.npmrc` for supply-chain security, which prevents the automatic `prepare` lifecycle script from running — `npm run setup` handles both steps in one command.
+
 ## License
 
 This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the LICENSE file.
