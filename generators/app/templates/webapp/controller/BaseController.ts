@@ -7,9 +7,6 @@ import ResourceBundle from "sap/base/i18n/ResourceBundle";
 import Router from "sap/ui/core/routing/Router";
 import History from "sap/ui/core/routing/History";
 
-/**
- * @namespace <%= appId %>.controller
- */
 export default abstract class BaseController extends Controller {
 	/**
 	 * Convenience method for accessing the component of the controller's view.
