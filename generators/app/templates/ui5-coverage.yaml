@@ -9,29 +9,11 @@ framework:
     - name: sap.m
     - name: sap.ui.core
     - name: themelib_<%= defaultTheme %>
-builder:
-  resources:
-    excludes:
-      - "test/e2e/**"
-  customTasks:
-    - name: ui5-tooling-transpile-task
-      afterTask: replaceVersion
 server:
   customMiddleware:
     - name: ui5-tooling-transpile-middleware
       afterMiddleware: compression
       configuration:
-        debug: true
-        babelConfig:
-          sourceMaps: true
-          ignore:
-          - "**/*.d.ts"
-          presets:
-          - - "@babel/preset-env"
-            - targets: defaults
-          - - transform-ui5
-          - "@babel/preset-typescript"
-          plugins:
-          - istanbul
+        coverage: true
     - name: ui5-middleware-livereload
       afterMiddleware: compression
