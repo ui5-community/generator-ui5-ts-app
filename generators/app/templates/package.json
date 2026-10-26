@@ -22,6 +22,7 @@
 		"test": "npm run lint && npm run test-ui5"
 	},
 	"devDependencies": {
+		"@eslint/js": "^10.0.1",
 		"<%= tstypes %>": "<%= tstypesVersion %>",
 		"@ui5/cli": "^4.0.71",
 		"@ui5/linter": "^1.23.7",
