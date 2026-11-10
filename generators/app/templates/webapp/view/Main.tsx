@@ -1,4 +1,5 @@
-import Button from "sap/m/Button";<% if (gte1_98_0) { %>
+import Button from "sap/m/Button";
+import Control from "sap/ui/core/Control";<% if (gte1_98_0) { %>
 import IllustratedMessage from "sap/m/IllustratedMessage";
 import Page from "sap/m/Page";<% } else { %>
 import MessagePage from "sap/m/MessagePage";<% } %>
@@ -14,14 +15,7 @@ export default class Main extends View {
 		return true;
 	}
 
-	public createContent(): <%= gte1_98_0 ? 'Page' : 'MessagePage' %> {
-		const helloButton = (
-			<Button
-				id="helloButton"
-				text={{ path: "i18n>btnText", formatter: formatter.formatValue }}
-				press=".sayHello"
-			/>
-		) as Button;
+	public createContent(): Control {
 <% if (gte1_98_0) { %>
 		return (
 			<Page title="{i18n>appTitle}" id="page">
@@ -30,7 +24,13 @@ export default class Main extends View {
 					illustrationType="sapIllus-SuccessHighFive"<% if (gte1_104_0) { %>
 					enableVerticalResponsiveness={true}<% } %>
 					description="{i18n>appDescription}"
-					additionalContent={[helloButton]}
+					additionalContent={
+						<Button
+							id="helloButton"
+							text={{ path: "i18n>btnText", formatter: formatter.formatValue }}
+							press=".sayHello"
+						/>
+					}
 				/>
 			</Page>
 		) as Page;
@@ -42,7 +42,13 @@ export default class Main extends View {
 				icon="sap-icon://accept"
 				id="page"
 				description="{i18n>appDescription}"
-				buttons={[helloButton]}
+				buttons={
+					<Button
+						id="helloButton"
+						text={{ path: "i18n>btnText", formatter: formatter.formatValue }}
+						press=".sayHello"
+					/>
+				}
 			/>
 		) as MessagePage;
 <% } %>

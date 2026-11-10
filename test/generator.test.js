@@ -111,6 +111,8 @@ function assertTsxProject({ result, read, json }, types = "@openui5/types") {
 	assert.deepEqual(JSON.parse(roots), { [namespace]: "./", "ui5.community.jsx.runtime": "./resources/ui5/community/jsx/runtime/" });
 	assert.match(read("webapp/view/Main.tsx"), /press="\.sayHello"/);
 	assert.match(read("webapp/view/Main.tsx"), /formatter: formatter\.formatValue/);
+	assert.match(read("webapp/view/Main.tsx"), /createContent\(\): Control/);
+	assert.doesNotMatch(read("webapp/view/Main.tsx"), /const helloButton/);
 	assert.match(read("webapp/view/App.tsx"), /id="app"/);
 	for (const name of ["App", "Main"]) {
 		assert.match(read(`webapp/view/${name}.tsx`), /getAutoPrefixId\(\): boolean \{\s+return true;/);
