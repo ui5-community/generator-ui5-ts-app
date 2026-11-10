@@ -9,6 +9,7 @@ const appURI = "com/example/app";
 
 async function generate(options = {}, answers = {}) {
 	const prompts = [];
+	const notices = [];
 	const commands = [];
 	const result = await helpers
 		.create(AppGenerator)
@@ -29,6 +30,11 @@ async function generate(options = {}, answers = {}) {
 				prompts.push(...questions);
 				return prompt(questions);
 			};
+			const log = generator.log.bind(generator);
+			generator.log = (...args) => {
+				notices.push(...args);
+				return log(...args);
+			};
 			generator.spawnCommandSync = (command, args) => {
 				commands.push([command, args]);
 				return { status: 0 };
@@ -38,6 +44,7 @@ async function generate(options = {}, answers = {}) {
 	return {
 		result,
 		prompts,
+		notices,
 		commands,
 		read: (file) => result.fs.read(result.cwd + "/" + file),
 		json: (file) => result.fs.readJSON(result.cwd + "/" + file)
@@ -72,7 +79,12 @@ function assertXmlProject({ result, read, json }) {
 	}
 }
 
-function assertTsxProject({ result, read, json }, types = "@openui5/types") {
+function assertTsxProject({ result, read, json, notices }, types = "@openui5/types") {
+	assert.equal(
+		notices.some((n) => /incubating/i.test(String(n))),
+		true,
+		"incubation notice was not logged"
+	);
 	result.assertFile(["webapp/view/App.tsx", "webapp/view/Main.tsx", "webapp/controller/App.controller.ts", "webapp/controller/Main.controller.ts"]);
 	result.assertNoFile(["webapp/view/App.view.xml", "webapp/view/Main.view.xml", ".babelrc", ".babelrc.json"]);
 	const pkg = json("package.json");
@@ -126,7 +138,15 @@ test("XML is the prompt default and has no JSX configuration", async () => {
 		assertXmlProject(project);
 		const prompt = project.prompts.find((question) => question.name === "viewType");
 		assert.equal(prompt.default, "XML");
-		assert.deepEqual(prompt.choices, ["XML", "TSX"]);
+		assert.deepEqual(
+			prompt.choices.map((c) => c.value),
+			["XML", "TSX"]
+		);
+		assert.match(prompt.choices[1].name, /incubating/);
+		assert.equal(
+			project.notices.some((n) => /incubating/i.test(n)),
+			false
+		);
 	} finally {
 		project.result.cleanup();
 	}
