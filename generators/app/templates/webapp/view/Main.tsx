@@ -29,7 +29,7 @@ export default class Main extends View {
 							id="helloButton"
 							text={{ path: "i18n>btnText", formatter: formatter.formatValue }}
 							press=".sayHello"
-						/>
+						/> as Button
 					}
 				/>
 			</Page>
@@ -47,7 +47,7 @@ export default class Main extends View {
 						id="helloButton"
 						text={{ path: "i18n>btnText", formatter: formatter.formatValue }}
 						press=".sayHello"
-					/>
+					/> as Button
 				}
 			/>
 		) as MessagePage;
