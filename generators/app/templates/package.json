@@ -20,8 +20,12 @@
 		"test-runner-coverage": "ui5-test-runner --url http://localhost:8080/test/testsuite.qunit.html --coverage -ccb 50 -ccf 50 -ccl 50 -ccs 50",
 		"test-ui5": "ui5-test-runner --start start-coverage --url http://localhost:8080/test/testsuite.qunit.html --coverage -ccb 50 -ccf 50 -ccl 50 -ccs 50",
 		"test": "npm run lint && npm run test-ui5"
-	},
-	"devDependencies": {
+	},<% if (viewType === "TSX") { %>
+	"dependencies": {
+		"@ui5-community/jsx-runtime": "^0.2.0"
+	},<% } %>
+	"devDependencies": {<% if (viewType === "TSX") { %>
+		"@babel/plugin-transform-react-jsx": "^7.0.0",<% } %>
 		"@eslint/js": "^10.0.1",
 		"<%= tstypes %>": "<%= tstypesVersion %>",
 		"@ui5/cli": "^4.0.71",

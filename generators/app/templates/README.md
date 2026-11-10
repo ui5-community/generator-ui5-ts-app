@@ -8,7 +8,19 @@ This app demonstrates a TypeScript setup for developing UI5 applications. The ce
 
 **The template is inspired by the [`SAP-samples/ui5-typescript-helloworld`](https://github.com/SAP-samples/ui5-typescript-helloworld) project which also contains [a detailed step-by-step guide](https://github.com/SAP-samples/ui5-typescript-helloworld/blob/main/step-by-step.md). It explains how this setup is created and how all the bits and pieces fit together.**
 
-## Requirements
+<% if (viewType === "TSX") { %>
+
+## TSX views
+
+The views in `webapp/view/*.tsx` extend `sap/ui/core/mvc/View` and use `@ui5-community/jsx-runtime`, not React. JSX creates UI5 controls directly. The existing controllers, bindings, formatters, and view-local control IDs are retained.
+
+TypeScript's `jsx` and `jsxImportSource` options enable JSX typing. The shared `config-ui5-tooling-transpile` configuration in `ui5.yaml` enables the automatic JSX transform for both builds and the development server. `ui5-coverage.yaml` enables the same transform with coverage instrumentation. Keep `@babel/plugin-transform-react-jsx` on major version 7; no `.babelrc` is needed.
+
+If you workspace-link the runtime's TypeScript sources, add `transpileDependencies: true` alongside `transformJSX` in both YAML files' shared transpile configurations. This is not needed for the installed, prebuilt runtime package.
+
+The build includes `ui5.community.jsx.runtime`. For CDN deployment, deploy `dist/resources/ui5/community/jsx/runtime/` along with the app: `index-cdn.html` points the runtime's resource root to `./resources/ui5/community/jsx/runtime/`. Adjust that root if you deploy the runtime modules elsewhere.
+
+<% } %>## Requirements
 
 Either [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) for dependency management.
 

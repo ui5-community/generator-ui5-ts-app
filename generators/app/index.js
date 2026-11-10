@@ -46,6 +46,11 @@ export default class extends Generator {
 			description: "The framework version to use, e.g. 1.136.0"
 		});
 
+		this.option("viewType", {
+			type: String,
+			description: "The view syntax to use, i.e. XML (default) or TSX"
+		});
+
 		this.argument("author", {
 			type: String,
 			required: false,
@@ -105,6 +110,14 @@ export default class extends Generator {
 				chalk.red(`The provided framework version ${this.options.frameworkVersion} is not valid! The minimum version for ${this.options.framework} is ${minFwkVersion[this.options.framework]}.`)
 			);
 			delete this.options.frameworkVersion;
+		}
+
+		if (this.options.viewType) {
+			this.options.viewType = this.options.viewType.toUpperCase();
+			if (!["XML", "TSX"].includes(this.options.viewType)) {
+				this.log(chalk.red("The provided view type is not valid! Please use either XML or TSX."));
+				delete this.options.viewType;
+			}
 		}
 
 		if (this.options.newdir !== undefined) {
@@ -184,6 +197,16 @@ export default class extends Generator {
 			});
 		}
 
+		if (!this.options.viewType) {
+			prompts.push({
+				type: "list",
+				name: "viewType",
+				message: "Which view syntax do you want to use?",
+				choices: ["XML", "TSX"],
+				default: "XML"
+			});
+		}
+
 		if (!this.options.author) {
 			prompts.push({
 				type: "input",
@@ -219,6 +242,7 @@ export default class extends Generator {
 					props[key] = props[key] || this.options[key];
 				});
 			props.namespace = props.namespace || props.appNamespace; // use "namespace" from here ("appNamespace" was used in the CLI to prevent a conflict with native this.options content)
+			props.viewType = props.viewType || this.options.viewType || "XML";
 
 			// use the namespace and the application name as new subdirectory
 			if (props.newdir) {
@@ -267,6 +291,11 @@ export default class extends Generator {
 				nodir: true
 			})
 			.forEach((file) => {
+				// Only copy templates for the selected view syntax.
+				if (file.startsWith("webapp/view/") && ((file.endsWith(".tsx") && oConfig.viewType !== "TSX") || (file.endsWith(".xml") && oConfig.viewType === "TSX"))) {
+					return;
+				}
+
 				let sTargetFile = file;
 
 				// Use different "test" folder for older versions
