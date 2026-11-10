@@ -77,6 +77,10 @@ function assertXmlProject({ result, read, json }) {
 	for (const file of ["README.md", "webapp/index-cdn.html", "tsconfig.json", "ui5.yaml", "ui5-coverage.yaml"]) {
 		assert.doesNotMatch(read(file), /jsx|TSX|tsx|cfgTranspile/);
 	}
+	for (const opa of ["webapp/test/integration/pages/MainPage.ts"]) {
+		assert.match(read(opa), new RegExp(`"${namespace}\.view\.Main"`), `${opa}: expected dot-notation viewName`);
+		assert.doesNotMatch(read(opa), /module:/, `${opa}: unexpected module: prefix`);
+	}
 }
 
 function assertTsxProject({ result, read, json, notices }, types = "@openui5/types") {
@@ -129,6 +133,10 @@ function assertTsxProject({ result, read, json, notices }, types = "@openui5/typ
 	for (const name of ["App", "Main"]) {
 		assert.match(read(`webapp/view/${name}.tsx`), /getAutoPrefixId\(\): boolean \{\s+return true;/);
 		assert.match(read(`webapp/view/${name}.tsx`), new RegExp(namespace + "\\.controller\\." + name));
+	}
+	for (const opa of ["webapp/test/integration/pages/MainPage.ts"]) {
+		assert.match(read(opa), new RegExp(`"module:${appURI}/view/Main"`), `${opa}: expected module: viewName`);
+		assert.doesNotMatch(read(opa), new RegExp(`"${namespace}\.view\.Main"`), `${opa}: unexpected dot-notation viewName`);
 	}
 }
 

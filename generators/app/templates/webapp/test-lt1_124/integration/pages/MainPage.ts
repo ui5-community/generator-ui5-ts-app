@@ -1,7 +1,7 @@
 import Opa5 from "sap/ui/test/Opa5";
 import Press from "sap/ui/test/actions/Press";
 
-const viewName = "<%= appId %>.view.Main";
+const viewName = "<%= viewType === 'TSX' ? 'module:' + appURI + '/view/Main' : appId + '.view.Main' %>";
 
 export default class MainPage extends Opa5 {
 	// Actions
