@@ -85,7 +85,7 @@ function assertXmlProject({ result, read, json }) {
 
 function assertTsxProject({ result, read, json, notices }, types = "@openui5/types") {
 	assert.equal(
-		notices.some((n) => /incubating/i.test(String(n))),
+		notices.some((n) => /incubation/i.test(String(n))),
 		true,
 		"incubation notice was not logged"
 	);
@@ -150,9 +150,9 @@ test("XML is the prompt default and has no JSX configuration", async () => {
 			prompt.choices.map((c) => c.value),
 			["XML", "TSX"]
 		);
-		assert.match(prompt.choices[1].name, /incubating/);
+		assert.match(prompt.choices[1].name, /incubation/);
 		assert.equal(
-			project.notices.some((n) => /incubating/i.test(n)),
+			project.notices.some((n) => /incubation/i.test(n)),
 			false
 		);
 	} finally {

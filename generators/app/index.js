@@ -48,7 +48,7 @@ export default class extends Generator {
 
 		this.option("viewType", {
 			type: String,
-			description: "The view syntax to use, i.e. XML (default) or TSX (incubating)"
+			description: "The view syntax to use, i.e. XML (default) or TSX (incubation)"
 		});
 
 		this.argument("author", {
@@ -204,7 +204,7 @@ export default class extends Generator {
 				message: "Which view syntax do you want to use?",
 				choices: [
 					{ name: "XML", value: "XML" },
-					{ name: `TSX ${chalk.yellow("(incubating)")}`, value: "TSX" }
+					{ name: `TSX ${chalk.yellow("(incubation)")}`, value: "TSX" }
 				],
 				default: "XML"
 			});
@@ -247,7 +247,7 @@ export default class extends Generator {
 			props.namespace = props.namespace || props.appNamespace; // use "namespace" from here ("appNamespace" was used in the CLI to prevent a conflict with native this.options content)
 			props.viewType = props.viewType || this.options.viewType || "XML";
 			if (props.viewType === "TSX") {
-				this.log(chalk.yellow("⚠  TSX views are incubating. The feature is functional but the template API may still change."));
+				this.log(chalk.yellow("⚠  TSX views are in incubation. The feature is functional but the template API may still change."));
 			}
 
 			// use the namespace and the application name as new subdirectory
