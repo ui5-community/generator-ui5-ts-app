@@ -42,6 +42,14 @@ $> yo ./generator-ui5-ts-app
  ´   `  |° ´ Y `
 ```
 
+## View syntax
+
+Choose **XML** (the default) or **TSX** when prompted. You can also select the syntax non-interactively using `--viewType=XML` or `--viewType=TSX`.
+
+TSX projects use [`@ui5-community/jsx-runtime`](https://github.com/ui5-community/jsx-runtime), not React. The generator creates typed UI5 views in `webapp/view/*.tsx` and configures TypeScript, build/dev/coverage transpilation, manifest dependencies, and the CDN resource root. The existing npm installation step installs the runtime and the v7 Babel JSX plugin; `ui5-tooling-transpile` already satisfies the required version (>=3.12).
+
+XML projects do not include TSX views, the JSX runtime, or JSX-specific configuration.
+
 ## Support
 
 Please use the GitHub bug tracking system to post questions, bug reports or to create pull requests.
@@ -59,6 +67,8 @@ npm run setup
 ```
 
 `npm run setup` installs dependencies and sets up the git hooks (Husky pre-commit for formatting and linting). The project uses `ignore-scripts=true` in `.npmrc` for supply-chain security, which prevents the automatic `prepare` lifecycle script from running — `npm run setup` handles both steps in one command.
+
+`npm run test:generator` runs the automated generator tests without installing generated application dependencies. `npm test` starts the interactive generator for manual testing.
 
 ## License
 

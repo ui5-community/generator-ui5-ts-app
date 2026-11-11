@@ -13,14 +13,16 @@
 			id="sap-ui-bootstrap"
 			src="https://<%= cdnDomain %>/<%= frameworkVersion %>/resources/sap-ui-core.js"<% if (gte1_120_0) { %>
 			data-sap-ui-resource-roots='{
-				"<%= appId %>": "./"
+				"<%= appId %>": "./"<% if (viewType === "TSX") { %>,
+				"ui5.community.jsx.runtime": "./resources/ui5/community/jsx/runtime/"<% } %>
 			}'
 			data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-compat-version="edge"
 			data-sap-ui-frame-options="trusted"<% } else { %>
 			data-sap-ui-theme="<%= defaultTheme %>"
 			data-sap-ui-resourceroots='{
-				"<%= appId %>": "./"
+				"<%= appId %>": "./"<% if (viewType === "TSX") { %>,
+				"ui5.community.jsx.runtime": "./resources/ui5/community/jsx/runtime/"<% } %>
 			}'
 			data-sap-ui-onInit="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-compatVersion="edge"

@@ -28,8 +28,9 @@
 
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "<%= appId %>.view.App",
-			"type": "XML",
+			"viewName": "<%= viewType === 'TSX' ? 'module:' + appURI + '/view/App' : appId + '.view.App' %>",<% if (viewType !== "TSX") { %>
+			"type": "XML",<% } else { %>
+			"displayBlock": true,<% } %>
 			"id": "app"
 		},
 
@@ -37,7 +38,8 @@
 			"minUI5Version": "<%= frameworkVersion %>",
 			"libs": {
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.m": {}<% if (viewType === "TSX") { %>,
+				"ui5.community.jsx.runtime": {}<% } %>
 			}
 		},
 
@@ -63,9 +65,10 @@
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
-				"type": "View",
+				"type": "View",<% if (viewType === "TSX") { %>
+				"async": true,<% } else { %>
 				"viewType": "XML",
-				"path": "<%= appId %>.view",
+				"path": "<%= appId %>.view",<% } %>
 				"controlId": "app",
 				"controlAggregation": "pages"
 			},
@@ -79,7 +82,7 @@
 			"targets": {
 				"main": {
 					"id": "main",
-					"name": "Main"
+					"name": "<%= viewType === 'TSX' ? 'module:' + appURI + '/view/Main' : 'Main' %>"
 				}
 			}
 		}

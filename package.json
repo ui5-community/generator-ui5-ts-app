@@ -12,6 +12,7 @@
 		"format:staged": "pretty-quick --staged --verbose",
 		"setup": "npm install && npm run prepare",
 		"test": "cd test && yo ../generators/app/index.js",
+		"test:generator": "node --test test/generator.test.js",
 		"prepare": "node ./.husky/skip.js || husky",
 		"hooks:pre-commit": "npm run format:staged && npm run lint:staged"
 	},
